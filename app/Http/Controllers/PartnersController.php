@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Partner;
 use Illuminate\Http\Request;
 use Session;
+use App\Country;
 
 class PartnersController extends Controller
 {
@@ -30,7 +31,8 @@ class PartnersController extends Controller
      */
     public function create()
     {
-        return view('partners.create');
+        $countries = Country::pluck('name', 'id');
+        return view('partners.create', compact('countries'));
     }
 
     /**
